@@ -1,0 +1,58 @@
+<ion-header>
+  <ion-navbar>
+    <!-- <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button> -->
+    <ion-title>Stock Trading App</ion-title>
+
+    <ion-buttons end>
+      <button ion-button icon-only (click)="login()">
+        <ion-icon name="log-in" class="login-button"> Login</ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content padding>
+  <h3>Welcome to the Lynton Edwards Stock Trading Android app!</h3>
+
+    <p>
+      This app helps you to:
+        <ion-list>
+          <ion-item><ion-icon name="paper-plane" item-left></ion-icon> track Zimbabwean Stock Exchange listed companies</ion-item>
+          <ion-item><ion-icon name="paper-plane" item-left></ion-icon> monitor listed companies share prices</ion-item>
+          <ion-item><ion-icon name="paper-plane" item-left></ion-icon> purchase stock of a company</ion-item>
+          <ion-item><ion-icon name="paper-plane" item-left></ion-icon> sell stock of a company</ion-item>
+          <ion-item><ion-icon name="paper-plane" item-left></ion-icon> get financial insights from economics experts </ion-item>
+          <ion-item><ion-icon name="paper-plane" item-left></ion-icon> get more knowledge on the companies you are investing in </ion-item>
+        </ion-list>
+      All this you can do from wherever you are and we facilitate that for you at Lynton Edwards. 
+    </p>
+    <br>
+    <p>
+      
+      <button ion-button color="primary" block (click)="register()">Create an account to start trading! Happy Trading!</button>
+
+    </p>
+  <br>
+  <h3>Today's Prices</h3>
+  <ion-list>
+    <button ion-item *ngFor="let vfl of vfls"> 
+        <ion-thumbnail item-start>
+            <img src="{{global.serverAddress}}/logos/{{vfl.logo}}">
+          </ion-thumbnail>
+      {{vfl.company}} <span class="shares-number">({{vfl.shares}} shares available)</span>
+      <div class="item-note" item-right>
+        <span class="share-price">RTGS${{vfl.price}}/share</span>
+      </div>
+    </button>
+  </ion-list>
+  <br><br><br>
+</ion-content>
+
+
+<ion-footer>
+  <ion-toolbar color="primary">
+    <ion-title>&copy; Developed by Rachel Rumbidzai Dube</ion-title>
+  </ion-toolbar>
+</ion-footer>

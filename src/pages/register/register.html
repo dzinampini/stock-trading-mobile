@@ -1,0 +1,55 @@
+<ion-header>
+
+  <ion-navbar>
+    <ion-title>Register for an Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+
+    <ion-grid>
+        <ion-row>
+          <ion-col col-2></ion-col>
+          <ion-col col-8 style="margin-left: auto;margin-right: auto;display: block;text-align:center;">
+            <img src="assets/imgs/register.png" style="width:45%;height:200px;">
+          </ion-col>
+          <ion-col col-2></ion-col>
+        </ion-row>
+      </ion-grid>
+
+
+  <form (submit)="register()" [formGroup]="formData">
+    <ion-list>
+      <ion-item>
+        <ion-label floating>Full Name</ion-label>
+        <ion-input [(ngModel)]="data.fullname" formControlName="fullname" required="" ></ion-input>
+        </ion-item>
+
+        <!-- <ion-item class="errors">
+          <p *ngIf="formData.controls['fullname'].errors" class="danger">Full name is required must be in letters only</p>
+        </ion-item> -->
+
+      <ion-item>
+        <ion-label floating>Email</ion-label>
+        <ion-input [(ngModel)]="data.email" formControlName="email"></ion-input>
+      </ion-item>
+
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input [(ngModel)]="data.password" formControlName="password" type="password"></ion-input>
+      </ion-item>
+    </ion-list>
+
+    <div class="errors">
+      <p *ngIf="formData.controls['fullname'].errors" class="danger">Full name is required must be in letters only</p>
+      <p *ngIf="formData.controls['email'].errors" class="danger">An email address is required must follow the proper email format</p>
+      <p *ngIf="formData.controls['password'].errors" class="danger">An password is required and must contain letters and numbers and must be between 8 and 12 characters</p>
+    </div>
+
+    <div padding>
+      <button [disabled]="!formData.valid" ion-button color="primary" block>Register</button>
+    </div>
+  </form>
+</ion-content>

@@ -1,0 +1,94 @@
+<!--
+  Generated template for the ProfilePage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>My Account</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding *ngFor="let vfl of vfls">
+  <h3>Personal Details</h3>
+  <form (submit)="updateProfile()" [formGroup]="formData">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Full Name</ion-label>
+          <ion-input  value="{{vfl.fullname}}" formControlName="fullname" required="" ></ion-input>
+          </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Email</ion-label>
+          <ion-input value="{{vfl.email}}" formControlName="email" readonly="true"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Bank</ion-label>
+            <ion-input value="{{vfl.bank}}" formControlName="bank"></ion-input>
+          </ion-item>
+
+          <ion-item>
+              <ion-label floating>Account Number</ion-label>
+              <ion-input value="{{vfl.account_number}}" formControlName="account_number"></ion-input>
+            </ion-item>
+  
+        <ion-item>
+          <ion-label floating>Password</ion-label>
+          <ion-input formControlName="password" type="password"></ion-input>
+        </ion-item>
+      </ion-list>
+  
+      <div class="errors">
+        <p *ngIf="formData.controls['fullname'].errors" class="danger">Full name is required must be in letters only</p>
+        <p *ngIf="formData.controls['email'].errors" class="danger">An email address is required must follow the proper email format</p>
+        <p *ngIf="formData.controls['password'].errors" class="danger">An password is required and must contain letters and numbers and must be between 8 and 12 characters</p>
+        <p *ngIf="formData.controls['bank'].errors" class="danger">Specify your bank again</p>
+        <p *ngIf="formData.controls['account_number'].errors" class="danger">An account number is required and must be between 8 and 16 characters</p>
+      </div>
+  
+      <div padding>
+        <button [disabled]="!formData.valid" ion-button color="primary" block>Update Profile</button>
+      </div>
+    </form>
+
+
+    <h3>Account Balance - RTGS${{vfl.balance}}</h3>
+
+  <h3>Top Up Account</h3>
+  <form (submit)="deposit()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Amount</ion-label>
+          <ion-input  [(ngModel)]="data.deposit" name="deposit" required="true" type="number" step="0.01" min="1" max="1000"></ion-input>
+          </ion-item>
+          <ion-item>
+              <ion-label floating>Proof of Payment</ion-label>
+              <ion-input  [(ngModel)]="data.proof" name="proof" required="true" ></ion-input>
+              </ion-item>
+      </ion-list>
+      <div padding>
+        <button ion-button color="primary" block>Top Up</button>
+      </div>
+    </form>
+
+  <h3>Request Money into Bank Account</h3>
+  <form (submit)="withdraw()">
+      <ion-list>
+        <ion-item>
+          <ion-label floating>Amount</ion-label>
+          <ion-input  [(ngModel)]="data2.withdraw" name="deposit" required="true" type="number" step="0.01" min="1" max="{{vfl.balance}}" ></ion-input>
+          </ion-item>
+      </ion-list>
+      <div padding>
+        <button ion-button color="primary" block>Withdraw</button>
+      </div>
+    </form> 
+</ion-content>

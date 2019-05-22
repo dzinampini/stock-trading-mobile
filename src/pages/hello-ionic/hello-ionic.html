@@ -1,0 +1,31 @@
+<ion-header>
+  <ion-navbar>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title>Stock Portfolio App</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+  <h3>Hello and welcome! Pick a company and view more about it you can end up purchasing shares of the company</h3>
+
+  <ion-list>
+          <button ion-item  *ngFor="let vfl of vfls" #item (click)="viewMore(item,vfl.id)"> <!--*ngFor="let vfl of vfls" -->
+            <ion-thumbnail item-start>
+                <img src="{{global.serverAddress}}/logos/{{vfl.logo}}">
+              </ion-thumbnail>
+            {{vfl.company}} <span class="shares-number">({{vfl.shares}} shares available)</span>
+            <div class="item-note" item-right>
+                <span class="share-price">RTGS${{vfl.price}}/share</span>
+            </div>
+          </button>  
+  </ion-list>
+</ion-content>
+
+<ion-footer>
+    <ion-toolbar color="primary">
+      <ion-title>&copy; Developed by Rachel Rumbidzai Dube</ion-title>
+    </ion-toolbar>
+  </ion-footer>

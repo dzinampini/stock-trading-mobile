@@ -1,0 +1,86 @@
+<!--
+  Generated template for the OneCompanyPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+
+  <ion-header>
+    <ion-navbar>
+      <ion-title *ngFor="let vfl of vfls" #item>{{vfl.company}} - <span class="share-price">RTGS${{vfl.price}}/share</span> </ion-title> 
+    </ion-navbar> 
+  </ion-header>
+
+  <ion-content *ngFor="let vfl of vfls" #item padding>
+
+      <ion-grid>
+          <ion-row>
+            <ion-col col-2></ion-col>
+            <ion-col col-8 style="margin-left: auto;margin-right: auto;display: block;text-align:center;">
+              <br><br> 
+              <table class="buy-sell" >
+                    <tr>
+                      <td class="buy-side">
+                          <p>
+                              <b>
+                                <br>
+                                <span class="share-price">{{vfl.shares}} </span> shares available to purchase.
+                                <br>
+                                <button ion-button color="primary" (click)="buy(item,vfl.id)">Buy</button> <!-- block--> 
+                              </b>
+                            </p>
+                      </td>
+                      <td class="sell-side">
+                          <p>
+                              <b>
+                                <br>
+                                You have
+                                <span class="share-price">
+                                {{pvs}}
+                                </span>
+                                shares in this company.
+                                <br>
+                                <button ion-button color="primary" (click)="sell(item,vfl.id)">Sell</button> <!-- block--> 
+                              </b>
+                            </p>
+                      </td>
+                    </tr>
+                  </table>
+
+                  <br><br>
+                  <h3>Shares Price History</h3>
+                  <ion-list>
+                    <ion-item-sliding>
+                      <ion-item *ngFor="let hj of hjs" #item>
+                        <p>{{hj.date_time}} -<b> RTGS${{hj.price}} </b></p>
+                      </ion-item>
+                    </ion-item-sliding>
+                  </ion-list>
+
+
+                  <br><br>
+                  <h3>Company Investment Knowledgebase</h3>
+                  <ion-list>
+                    <ion-item-sliding>
+                      <ion-item *ngFor="let kb of kbs" #item>
+                        <b>{{kb.summary}} </b><br>
+                        <p>{{kb.comment}} 
+                          <br>
+                          <a href="{{kb.link}}"> Read More</a></p>
+                      </ion-item>
+                    </ion-item-sliding>
+                  </ion-list>
+
+
+            </ion-col>
+            <ion-col col-2></ion-col>
+          </ion-row>
+        </ion-grid>
+  </ion-content>
+
+
+  <ion-footer>
+      <ion-toolbar color="primary">
+        <ion-title>&copy; Developed by Rachel Rumbidzai Dube</ion-title>
+      </ion-toolbar>
+    </ion-footer>

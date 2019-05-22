@@ -1,0 +1,63 @@
+<!--
+  Generated template for the PortfolioPage page.
+
+  See http://ionicframework.com/docs/components/#navigation for more info on
+  Ionic pages and navigation.
+-->
+<ion-header>
+
+  <ion-navbar>
+      <button ion-button menuToggle>
+          <ion-icon name="menu"></ion-icon>
+        </button>
+    <ion-title>My Portfolio</ion-title>
+  </ion-navbar>
+
+</ion-header>
+
+
+<ion-content padding>
+    <h3>Portfolio </h3>
+  <ion-list>
+    <ion-item *ngFor="let vfl of vfls">
+          <h2><b><u>{{vfl.company_name}}</u></b></h2>
+      <table>
+        <tr>
+          <th>Shares: </th>
+          <td> {{vfl.shares}}</td>
+        </tr>
+        <tr>
+          <th>Share Price: </th>
+          <td> RTGS${{vfl.current_price}}</td>
+        </tr>
+        <tr>
+          <th>Total Value: </th>
+          <td> RTGS${{vfl.current_price*vfl.shares}}</td>
+        </tr>
+      </table>
+    </ion-item>
+  </ion-list>
+
+    <h3>Purchases History </h3>
+    <ion-list>
+      <ion-item *ngFor="let vfl of vfls2">
+            <b>{{vfl.company_name}}</b> &nbsp;&nbsp;
+            Shares: <b>{{vfl.shares}}</b> &nbsp;&nbsp;
+            Buying Price: <b>RTGS${{vfl.cost}}</b> &nbsp;&nbsp;
+            Current Value: <b>RTGS${{vfl.current_price}}</b> &nbsp;&nbsp;
+            Status: <b>{{vfl.status}}</b>
+      </ion-item>
+    </ion-list>
+
+    <h3>Sales Transactions History</h3>
+    <ion-list>
+        <ion-item *ngFor="let vfl of vfls3">
+              <b>{{vfl.company_name}}</b> &nbsp;&nbsp;
+              Shares: <b>{{vfl.shares}}</b> &nbsp;&nbsp;
+              Selling Price: <b>RTGS${{vfl.cost}}</b> &nbsp;&nbsp;
+              Current Value: <b>RTGS${{vfl.current_price}}</b> &nbsp;&nbsp;
+              Status: <b>{{vfl.status}}</b>
+        </ion-item>
+      </ion-list>
+
+  </ion-content>
